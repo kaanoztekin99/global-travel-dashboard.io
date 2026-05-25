@@ -22,7 +22,7 @@ async function initGlobe() {
 
   const path = d3.geoPath(projection);
 
-  const geojson = await d3.json("../data/geojson/countries.geojson");
+  const geojson = await d3.json("data/geojson/countries.geojson");
 
   svg
     .append("circle")
