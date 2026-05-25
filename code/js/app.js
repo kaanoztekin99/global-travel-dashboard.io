@@ -1,3 +1,15 @@
+const SITE_BASE_PATH = (() => {
+  const pathname = window.location.pathname;
+
+  if (pathname.endsWith("/")) {
+    return pathname;
+  }
+
+  return pathname.includes(".") ? pathname.replace(/[^/]*$/, "") : `${pathname}/`;
+})();
+
+const resolveSitePath = (relativePath) => `${SITE_BASE_PATH}${relativePath}`;
+
 function App() {
   const [isMapFull, setIsMapFull] = React.useState(false);
   const [mapMode, setMapMode] = React.useState("2d");
@@ -163,9 +175,9 @@ function App() {
   };
 
   React.useEffect(() => {
-        const countryDataPromise = d3.csv("data/clean/countries.csv");
-        const cityDataPromise = d3.csv("data/clean/cities.csv");
-        const heritageDataPromise = d3.csv("data/clean/heritage.csv");
+        const countryDataPromise = d3.csv(resolveSitePath("data/clean/countries.csv"));
+        const cityDataPromise = d3.csv(resolveSitePath("data/clean/cities.csv"));
+        const heritageDataPromise = d3.csv(resolveSitePath("data/clean/heritage.csv"));
 
         Promise.all([countryDataPromise, cityDataPromise, heritageDataPromise])
             .then(([countryData, cityData, heritageData]) => {

@@ -1,3 +1,15 @@
+const SITE_BASE_PATH = (() => {
+  const pathname = window.location.pathname;
+
+  if (pathname.endsWith("/")) {
+    return pathname;
+  }
+
+  return pathname.includes(".") ? pathname.replace(/[^/]*$/, "") : `${pathname}/`;
+})();
+
+const resolveSitePath = (relativePath) => `${SITE_BASE_PATH}${relativePath}`;
+
 async function initGlobe() {
   const container = document.getElementById("globe");
   if (!container) return;
@@ -22,7 +34,7 @@ async function initGlobe() {
 
   const path = d3.geoPath(projection);
 
-  const geojson = await d3.json("data/geojson/countries.geojson");
+  const geojson = await d3.json(resolveSitePath("data/geojson/countries.geojson"));
 
   svg
     .append("circle")

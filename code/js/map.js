@@ -1,3 +1,15 @@
+const SITE_BASE_PATH = (() => {
+  const pathname = window.location.pathname;
+
+  if (pathname.endsWith("/")) {
+    return pathname;
+  }
+
+  return pathname.includes(".") ? pathname.replace(/[^/]*$/, "") : `${pathname}/`;
+})();
+
+const resolveSitePath = (relativePath) => `${SITE_BASE_PATH}${relativePath}`;
+
 const regionMapViews = {
   World: {
     center: [10, 25],
@@ -493,11 +505,11 @@ function initMap() {
   window.dashboardMap = map;
 
   map.on("load", async () => {
-    const response = await fetch("data/geojson/countries.geojson");
+    const response = await fetch(resolveSitePath("data/geojson/countries.geojson"));
     const geojson = await response.json();
 
     // load data from country arrivals dataset
-    const countriesData = await fetch("data/clean/countries.csv");
+    const countriesData = await fetch(resolveSitePath("data/clean/countries.csv"));
     const countriesCsv = await countriesData.text();
     const arrivals = d3.csvParse(countriesCsv);
     const arrivalsMap = new Map(
@@ -505,7 +517,7 @@ function initMap() {
     );
     window.arrivalsMap = arrivalsMap;
 
-    const heritageData = await fetch("data/clean/heritage.csv");
+    const heritageData = await fetch(resolveSitePath("data/clean/heritage.csv"));
     const heritageCsv = await heritageData.text();
     const heritageSites = d3.csvParse(heritageCsv);
     const heritageGeojson = {
