@@ -1,35 +1,132 @@
-# Global Travel Dashboard
+# 🌍 Exploring Global Travel Patterns
 
-This project is prepared for GitHub Pages deployment.
+This project is developed as part of the **DT056A – Visualization course**.
 
-## GitHub Pages setup
+The goal of the project is to explore global travel destinations by analyzing the relationship between:
 
-1. Create a new repository on GitHub named `project-github-io` (or another name you prefer).
-2. Add the remote repository locally:
+- Cultural heritage (UNESCO World Heritage sites)
+- Tourism popularity (most visited places)
+- Travel affordability (budget levels)
 
-   ```bash
-   git remote add origin https://github.com/<username>/<repo-name>.git
-   git push -u origin main
-   ```
+The project presents an **interactive multi-view visualization dashboard** that allows users to explore global tourism patterns.
 
-3. In the GitHub repository settings, enable GitHub Pages with:
-   - Branch: `main`
-   - Folder: `/docs`
+---
 
-4. After saving, the live site will appear at:
-   `https://<username>.github.io/<repo-name>/`
+## 🎯 Project Goals
 
-## Local preview
+We aim to answer questions such as:
 
-Open `docs/index.html` directly, or run a local static server in the project root:
+- Is there a relationship between cultural heritage richness and tourism popularity?
+- Are highly visited destinations generally more expensive?
+- Do destinations with more UNESCO sites attract more visitors?
+- Which destinations attract many tourists despite having fewer heritage sites?
 
-```bash
-python3 -m http.server 8000
-```
+---
 
-Then visit `http://localhost:8000/docs/index.html`.
+## 📊 Datasets
 
-## Notes
+The project integrates multiple datasets into a unified dataset:
 
-- The site source is inside the `docs/` folder.
-- The `.nojekyll` file is included so GitHub Pages serves the static site without Jekyll processing.
+### 1. UNESCO World Heritage Dataset
+- Information about cultural and natural heritage sites
+- Includes country, site name, category, and location
+
+### 2. Most Visited Places Dataset
+- Tourism popularity data (visitor counts / rankings)
+
+### 3. Worldwide Travel Dataset
+- Travel-related attributes such as:
+  - city
+  - country
+  - budget level (budget / mid-range / luxury)
+
+---
+
+## ⚙️ Data Processing
+
+The datasets are preprocessed and merged using:
+
+- Country and city names
+- Duplicate removal
+- Name normalization (country/city consistency)
+- Handling missing values
+- Preparing categorical data (budget levels)
+
+---
+
+## 📈 Planned Visualizations
+
+The system includes multiple coordinated views:
+
+- 🌍 **World Map**  
+  Geographic exploration of visitor counts per country  
+
+- 📊 **Scatter Plot**  
+  Relationship between heritage sites and tourism popularity  
+
+- 📉 **Bar Chart**  
+  Comparison of tourism based on travel budget levels  
+
+- 🗂 **Treemap**  
+  Overview of most visited destinations  
+
+---
+
+## 🔄 Interactivity
+
+The dashboard supports:
+
+- Filtering by country and budget level  
+- Brushing and linking between views  
+- Hover-based details (detail-on-demand)  
+- Interactive map navigation  
+
+---
+
+## 🛠 Technologies
+
+- Python (data processing)
+- Pandas
+- JavaScript / HTML
+- Bokeh / Plotly / Vega-Lite
+- GeoJSON (for world map visualization)
+
+---
+
+## 🚀 Future Improvements
+
+- Add more datasets (e.g., climate, safety index)
+- Improve interaction design
+- Enhance visual styling and UI
+- Deploy as a web-based dashboard
+
+---
+
+## 📚 References
+
+- UNESCO World Heritage Dataset  
+- Kaggle Tourism Datasets  
+- Natural Earth GeoJSON  
+
+---
+
+## 👥 Authors
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/kaanoztekin99">
+        <img src="https://avatars.githubusercontent.com/kaanoztekin99" width="80" alt="Kaan Tekin Öztekin"/><br />
+        <sub><b>Kaan Tekin Öztekin</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/LeonardoNNanci">
+        <img src="https://avatars.githubusercontent.com/LeonardoNNanci" width="80" alt="Leonardo Noia Nanci de Araujo Silva"/><br />
+        <sub><b>Leonardo Noia Nanci de Araujo Silva</b></sub>
+      </a>
+    </td>
+
+  </tr>
+</table>
+
+---
