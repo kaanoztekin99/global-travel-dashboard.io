@@ -93,7 +93,7 @@
       );
     }
 
-    d3.json("../../data/geojson/countries.geojson").then(data => {
+    d3.json("data/geojson/countries.geojson").then(data => {
       data.features.forEach((feature, i) => {
         const props = feature.properties || (feature.properties = {});
         props.display_name = getCountryName(props, i);

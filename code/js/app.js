@@ -163,9 +163,9 @@ function App() {
   };
 
   React.useEffect(() => {
-        const countryDataPromise = d3.csv("../data/clean/countries.csv");
-        const cityDataPromise = d3.csv("../data/clean/cities.csv");
-        const heritageDataPromise = d3.csv("../data/clean/heritage.csv");
+        const countryDataPromise = d3.csv("data/clean/countries.csv");
+        const cityDataPromise = d3.csv("data/clean/cities.csv");
+        const heritageDataPromise = d3.csv("data/clean/heritage.csv");
 
         Promise.all([countryDataPromise, cityDataPromise, heritageDataPromise])
             .then(([countryData, cityData, heritageData]) => {
