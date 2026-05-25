@@ -1,4 +1,4 @@
-const SITE_BASE_PATH = (() => {
+window.SITE_BASE_PATH = window.SITE_BASE_PATH || (() => {
   const pathname = window.location.pathname;
 
   if (pathname.endsWith("/")) {
@@ -16,7 +16,7 @@ const SITE_BASE_PATH = (() => {
   return `${pathname}/`;
 })();
 
-const resolveSitePath = (relativePath) => `${SITE_BASE_PATH}${relativePath}`;
+window.resolveSitePath = window.resolveSitePath || ((relativePath) => `${window.SITE_BASE_PATH}${relativePath}`);
 
 const regionMapViews = {
   World: {
