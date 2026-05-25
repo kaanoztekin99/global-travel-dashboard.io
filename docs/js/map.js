@@ -5,7 +5,15 @@ const SITE_BASE_PATH = (() => {
     return pathname;
   }
 
-  return pathname.includes(".") ? pathname.replace(/[^/]*$/, "") : `${pathname}/`;
+  const lastSegment = pathname.substring(pathname.lastIndexOf("/") + 1);
+  const fileLikeSegment = /\.[^/]+$/.test(lastSegment);
+  const knownFileExtension = /\.(html?|php|asp|aspx|json|xml|js|css|svg|png|jpe?g|gif|map)$/i;
+
+  if (fileLikeSegment && knownFileExtension.test(lastSegment)) {
+    return pathname.replace(/[^/]*$/, "");
+  }
+
+  return `${pathname}/`;
 })();
 
 const resolveSitePath = (relativePath) => `${SITE_BASE_PATH}${relativePath}`;
